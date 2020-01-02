@@ -17,8 +17,8 @@ import com.celiosato.cursomc.services.CategoriaService;
 
 @RestController
 @RequestMapping(value="/categorias") //end point categorias
+
 public class CategoriaResource {
-	
 	
 	@Autowired
 	private CategoriaService service;
