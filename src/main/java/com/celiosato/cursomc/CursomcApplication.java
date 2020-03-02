@@ -8,7 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.celiosato.cursomc.CursomcApplication;
 import com.celiosato.cursomc.domain.Categoria;
 import com.celiosato.cursomc.domain.Cidade;
 import com.celiosato.cursomc.domain.Cliente;
