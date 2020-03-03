@@ -78,7 +78,7 @@ public class Cliente implements Serializable{
 	}
 
 	public void setEmail(String email) {
-		email = email;
+		this.email = email;
 	}
 
 	public String getCpfOuCnpj() {
