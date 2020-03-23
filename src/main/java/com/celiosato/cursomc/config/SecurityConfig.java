@@ -52,6 +52,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			"/auth/forgot/**"
 	};
 	
+	
+	private static final String[] PUBLIC_MATCHERS_PUT = {
+			"/categorias/**"
+			
+	};
+	
+	
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		
@@ -63,6 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
 			.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()
+			.antMatchers(HttpMethod.PUT, PUBLIC_MATCHERS_PUT).permitAll()
 			.antMatchers(PUBLIC_MATCHERS).permitAll()
 			.anyRequest().authenticated();
 		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
@@ -76,8 +85,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 	@Bean
 	  CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
+		configuration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
 	    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-	    source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+	    source.registerCorsConfiguration("/**", configuration);
 	    return source;
 	  }
 	
